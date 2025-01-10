@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime and Factorial Checker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Prime and Factorial Checker</h1>
+        <input type="number" id="numberInput" placeholder="Enter a number">
+        <br>
+        <button id="primeButton">Check Prime</button>
+        <button id="factorialButton">Find Factorial</button>
+        <button id="clearButton">Clear</button>
+        <div id="result"></div>
+    </div>
+
+    <!-- Info button and instructions -->
+    <button id="infoButton">?</button>
+    <div id="instructions" class="tooltip hidden">
+        <h2>Instructions:</h2>
+        <p>1. Enter a number in the input field.</p>
+        <p>2. Click 'Check Prime' to determine if the number is prime.</p>
+        <p>3. Click 'Find Factorial' to calculate the factorial of the number.</p>
+        <p>4. Click 'Clear' to reset the input and result.</p>
+        <p>5. The result will be displayed below the buttons.</p>
+    </div>
+
+    <!-- Dark/Light Mode Toggle Switch -->
+    <div class="theme-toggle-container">
+        <label class="theme-switch">
+            <input type="checkbox" id="themeToggleButton">
+            <span class="slider round"></span>
+        </label>
+        <span id="themeIcon" class="theme-icon">🌞</span> <!-- Sun icon for light mode -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!--Author: Syrel Miguel Capule-->

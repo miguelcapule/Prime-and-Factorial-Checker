@@ -1,0 +1,259 @@
+/* Root variables for light and dark themes */
+:root {
+    /* Light Mode Colors */
+    --background-light: linear-gradient(45deg, #f0f8ff, #e0ffff);
+    --container-light: #ffffff;
+    --text-light: #555;
+    --button-light: #007bff;
+    --button-hover-light: #0056b3;
+    --tooltip-light: #ffffff;
+    --input-border-light: #ccc;
+
+    /* Dark Mode Colors */
+    --background-dark: #1c1c1c;
+    --container-dark: #2f2f2f;
+    --text-dark: #ddd;
+    --button-dark: #4e73df;
+    --button-hover-dark: #3b5bbf;
+    --tooltip-dark: #333;
+    --input-border-dark: #444;
+}
+
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    background-color: var(--background-light);
+    color: var(--text-light);
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+/* Container for Central Content */
+.container {
+    text-align: center;
+    background: var(--container-light);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover effect for container */
+.container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Tooltip Style */
+.tooltip {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: var(--tooltip-light);
+    color: #333;
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+
+body.dark-mode .container {
+    background: var(--container-dark);
+}
+
+body.dark-mode .tooltip {
+    background: var(--tooltip-dark);
+    color: #ecf0f1;
+}
+
+/* Input, Button, and Result Styling */
+input, button {
+    margin: 12px;
+    padding: 12px;
+    border: 1px solid var(--input-border-light);
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    font-size: 16px;
+}
+
+input:focus, button:focus {
+    border-color: var(--button-light);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button {
+    background-color: var(--button-light);
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--button-hover-light);
+    transform: scale(1.05);
+}
+
+/* Tooltip Show Effect */
+#infoButton:hover + .tooltip {
+    opacity: 1;
+}
+
+/* Theme Toggle Styles */
+.theme-toggle-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Theme Icon (Sun for light mode, Moon for dark mode) */
+.theme-icon {
+    font-size: 1.5rem;
+    transition: transform 0.4s ease-in-out;
+}
+
+body.dark-mode #themeIcon {
+    transform: rotate(180deg);
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        width: 90%;
+    }
+
+    #infoButton {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .tooltip {
+        width: 260px;
+    }
+
+    input, button {
+        width: 100%;
+        font-size: 14px;
+    }
+}
+
+/* Dark Mode Styles */
+body[data-theme="dark"] {
+    background: var(--background-dark);
+    color: var(--text-dark);
+}
+
+body[data-theme="dark"] .container {
+    background: var(--container-dark);
+}
+
+body[data-theme="dark"] #infoButton {
+    background-color: var(--button-dark);
+}
+
+body[data-theme="dark"] #infoButton:hover {
+    background-color: var(--button-hover-dark);
+}
+
+body[data-theme="dark"] .tooltip {
+    background: var(--tooltip-dark);
+}
+
+body[data-theme="dark"] input, body[data-theme="dark"] button {
+    border: 1px solid var(--input-border-dark);
+}
+
+body[data-theme="dark"] button {
+    background-color: var(--button-dark);
+}
+
+body[data-theme="dark"] button:hover {
+    background-color: var(--button-hover-dark);
+}
+
+/* Clear button specific styles */
+#clearButton {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+#clearButton:hover {
+    background-color: #c82333;
+}
+
+/* Placeholder Styling for Light and Dark Mode */
+body:not(.dark-mode) input::placeholder {
+    color: #aaa;
+}
+
+body.dark-mode input::placeholder {
+    color: #888;
+}
+
+/* Author: Syrel Miguel Capule */
